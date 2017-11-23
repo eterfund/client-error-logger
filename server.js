@@ -12,16 +12,17 @@ if (!config.noStatic) {
   app.use('/client.js', express.static('client.dist.js'));
 }
 
-app.use(bodyParser.json())
-app.post('/jsnlog.logger', function (req, res) { 
-    logMessage(req.body, req.header('user-agent'));
+app.use(bodyParser.json());
+app.set('trust proxy', 'loopback');
+app.post('/jsnlog.logger', function (req, res) {
+    logMessage(req.body, req.header('user-agent'), req.connection.remoteAddress);
     res.send(''); 
 });
 
 app.listen(config.port);
 
 
-function logMessage (logJson, userAgent) {
+function logMessage (logJson, userAgent, ip) {
   function safeDeserialise (s) {
     try {
       return JSON.parse(s);
@@ -44,6 +45,7 @@ function logMessage (logJson, userAgent) {
       requestId: receivedRequestId,
       userAgent: userAgent,
       currentPage: logJson.currentPage,
+      ip: ip,
       clientTimestamp: new Date(receivedLogEntry.t)
     };
 
