@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <script src='client.js'></script>
+    <style>
+      #create-error, #create-rejected-promise {
+        display: block;
+        font-size: 1.6em;
+        height: 50px;
+        margin: 10px auto;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="create-error">Throw error</button>
+    <button id="create-rejected-promise">Reject promise</button>
+    <script>
+      document.querySelector('#create-error').addEventListener('click', function () {
+        throw new Error('Test error');
+      });
+      document.querySelector('#create-rejected-promise').addEventListener('click', function () {
+        Promise.reject('Test rejection');
+      });
+    </script>
+  </body>
+</html>

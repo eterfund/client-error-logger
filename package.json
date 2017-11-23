@@ -1,0 +1,19 @@
+{
+  "name": "client-error-logger",
+  "version": "1.0.0",
+  "description": "Client JS code and server to log client JS errors",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack --optimize-minimize client.js client.dist.js"
+  },
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "express": "4.16.2",
+    "jsnlog": "2.24.3",
+    "jsnlog-nodejs": "2.24.3"
+  },
+  "devDependencies": {
+    "webpack": "3.8.1"
+  }
+}
