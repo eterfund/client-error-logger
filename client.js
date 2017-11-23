@@ -2,7 +2,7 @@ var JL = require('jsnlog').JL;
 
 
 JL.setOptions({
-  beforeSend: function (_, json) {
-    json.userAgent = navigator.userAgent;
+  defaultBeforeSend: function (_, json) {
+    json.currentPage = location.href;
   }
 });

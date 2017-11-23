@@ -24,9 +24,9 @@ app.listen(config.port);
 function logMessage (logJson, userAgent) {
   function safeDeserialise (s) {
     try {
-        return JSON.parse(s);
+      return JSON.parse(s);
     } catch (e) {
-        return s;
+      return s;
     }
   };
 
@@ -43,6 +43,7 @@ function logMessage (logJson, userAgent) {
       clientMessage: safeDeserialise(receivedLogEntry.m),
       requestId: receivedRequestId,
       userAgent: userAgent,
+      currentPage: logJson.currentPage,
       clientTimestamp: new Date(receivedLogEntry.t)
     };
 
