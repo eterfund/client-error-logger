@@ -49,6 +49,6 @@ function logMessage (logJson, userAgent, ip) {
       clientTimestamp: new Date(receivedLogEntry.t)
     };
 
-    JL(loggerName).log(logLevel, newLogEntry);
+    JL(loggerName).log(3000, newLogEntry);
   }
 }
